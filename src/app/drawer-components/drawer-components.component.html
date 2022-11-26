@@ -1,0 +1,15 @@
+<mat-selection-list>
+    <div mat-subheader>Caminhos:</div>
+    <mat-list-item *ngFor="let val of rotas">
+        <mat-icon matListItemIcon>{{val.icon}}</mat-icon>
+        <div matListItemTitle>{{val.name}}</div>
+        <div matListItemLine>{{val.description}}</div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <div mat-subheader>Opções:</div>
+    <mat-list-item *ngFor="let val of options">
+        <mat-icon matListItemIcon>{{val.icon}}</mat-icon>
+        <div matListItemTitle>{{val.name}}</div>
+        <div matListItemLine>{{val.description}}</div>
+    </mat-list-item>
+</mat-selection-list>
