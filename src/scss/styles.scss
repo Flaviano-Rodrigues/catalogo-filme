@@ -1,0 +1,6 @@
+@use 'reset';
+@use 'vars' as vars;
+
+.default-color {
+    color: vars.$defaultColor;
+}

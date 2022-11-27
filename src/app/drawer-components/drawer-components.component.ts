@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
+import { Location } from '@angular/common';
 
 export interface Section {
   name: string;
@@ -13,6 +15,9 @@ export interface Section {
   styleUrls: ['./drawer-components.component.scss']
 })
 export class DrawerComponentsComponent {
+
+  @Input() drawer!: MatDrawer;
+
   rotas: Section[] = [
     {
       name: 'Home',
@@ -35,4 +40,15 @@ export class DrawerComponentsComponent {
       description: 'Veja e edite suas informações'
     },
   ];
+
+  ngOnInit(): void {
+    //Verifico se a rote foi mudada e fecho o drawer:
+    this.location.onUrlChange(_ => {
+      this.drawer.close();
+    })
+  }
+
+  constructor(
+    private location: Location
+  ) { }
 }

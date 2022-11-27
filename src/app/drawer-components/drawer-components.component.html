@@ -1,6 +1,6 @@
 <mat-selection-list>
     <div mat-subheader>Caminhos:</div>
-    <mat-list-item *ngFor="let val of rotas">
+    <mat-list-item [routerLink]="val.route" *ngFor="let val of rotas">
         <mat-icon matListItemIcon>{{val.icon}}</mat-icon>
         <div matListItemTitle>{{val.name}}</div>
         <div matListItemLine>{{val.description}}</div>

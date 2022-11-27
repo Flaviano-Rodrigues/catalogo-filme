@@ -1,0 +1,12 @@
+<div class="container-list-movies">
+    <h1><span class="default-color">Mais</span> Populares</h1>
+
+    <div class="container-list-movies-filmes-content">
+
+        <div *ngFor="let info of populares">
+            <div *ngIf="info.poster_path !== null" matTooltip={{info.title}}
+                style="background-image: url(https://image.tmdb.org/t/p/w500{{info.poster_path}});"
+                class="container-list-movies-filmes-content-imgSingle"></div>
+        </div>
+    </div>
+</div>

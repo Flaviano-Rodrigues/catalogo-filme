@@ -1,0 +1,25 @@
+.container-list-movies {
+    margin-top: 40px;
+
+    &-filmes-content {
+        display: flex;
+        flex-wrap: wrap;
+
+        &-imgSingle {
+            width: 150px;
+            height: 200px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: rgba($color: #0000, $alpha: 0.1);
+            border-radius: 5px;
+            margin: 5px;
+            cursor: pointer;
+            transition: 0.4s;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
