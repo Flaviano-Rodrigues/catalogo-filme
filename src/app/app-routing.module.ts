@@ -6,11 +6,12 @@ import { MovieSingleComponent } from './movie-single/movie-single.component';
 import { SearchMovieComponent } from './search-movie/search-movie.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: '', component: HomeComponent },
   { path: 'pesquisar', component: SearchMovieComponent },
   { path: 'filme/:id', component: MovieSingleComponent },
   { path: 'genero/:id', component: GeneroSingleComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
+
 ];
 
 

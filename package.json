@@ -1,10 +1,10 @@
 {
   "name": "catalogo-filme",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "build": "ng build",
+    "build": "ng build --base-href='catalogo-filme'",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
