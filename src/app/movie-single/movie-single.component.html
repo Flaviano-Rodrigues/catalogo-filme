@@ -1,0 +1,131 @@
+<section *ngIf="filme !== undefined">
+    <div style="background-image: url(https://image.tmdb.org/t/p/original{{filme.backdrop_path}});" class="header">
+        <div class="header-grid">
+            <div style="background-image: url(https://image.tmdb.org/t/p/w500{{filme.poster_path}});"
+                class="header-grid-imgSingle">
+                <p class="inside-poster-information inside-information-movie-single">{{filme.vote_average}} <mat-icon
+                        matListItemIcon>star</mat-icon>
+                </p>
+            </div>
+        </div>
+        <div class="header-chips">
+            <mat-chip-listbox>
+                <mat-chip-option *ngFor="let generos of filme.genres" class="header-chips-single"
+                    routerLink="/genero/{{generos.id}}" selectable={{false}}>
+                    {{generos.name}}
+                </mat-chip-option>
+            </mat-chip-listbox>
+        </div>
+    </div>
+
+    <div class="container-to-show-infos body">
+
+        <div class="chips-mobile">
+            <mat-chip-listbox>
+                <mat-chip-option *ngFor="let generos of filme.genres" class="chips-mobile-single"
+                    routerLink="/genero/{{generos.id}}" selectable={{false}}>
+                    {{generos.name}}
+                </mat-chip-option>
+            </mat-chip-listbox>
+        </div>
+
+        <div class="flex-between">
+            <div></div>
+            <div *ngIf="filme.overview !== null" class="box-container w50 body-sinopse-content">
+                <h2>Sino<span class="default-color">pse</span></h2>
+                <p>{{filme.overview}}</p>
+            </div>
+        </div>
+        <br>
+        <div class="flex-between">
+            <div class="box-container w50">
+                <h2>Onde <span class="default-color">Assistir</span></h2>
+            </div>
+            <br>
+
+            <div class="box-container informacoes w50">
+                <h2>Principais Informa<span class="default-color">ções</span></h2>
+
+                <ul>
+                    <li><b>Situação:</b> {{filme.status}}</li>
+                    <li><b>Data do Lançamento:</b> {{filme.release_date | date:'dd/MM/YYYY'}}</li>
+                    <li><b>Titulo Original:</b> {{filme.original_title}}</li>
+                    <li><b>Populariade: </b> {{filme.popularity}}</li>
+                    <li><b>Avaliado: </b> {{filme.vote_count}} vezes</li>
+                    <li><b>Lingua Original:</b> {{filme.original_language | uppercase}}</li>
+                    <li><b>Filme Adulto:</b> {{filme.adult?'Sim':'Não'}}</li>
+
+                    <li *ngIf="filme.homepage !== null && filme.homepage !== ''"><a class="anchor" target="_blank"
+                            [href]="filme.homepage">Website</a></li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="flex-between" style="align-items: flex-start">
+            <div class="flex-column w50">
+                <div class="box-container w100">
+                    <h2>Produzido <span class="default-color">Em</span></h2>
+
+                    <div *ngFor="let val of filme.production_countries">
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title-group>
+                                    <mat-card-title>{{val.name}}</mat-card-title>
+                                    <mat-card-subtitle *ngIf="val.iso_3166_1 !== ''">Localização: {{val.iso_3166_1 |
+                                        uppercase}}</mat-card-subtitle>
+                                </mat-card-title-group>
+                            </mat-card-header>
+                            <br>
+
+                        </mat-card>
+                        <br>
+                    </div>
+                </div>
+                <br>
+                <div class="box-container w100">
+                    <h2>Linguas <span class="default-color">Faladas</span></h2>
+
+                    <div *ngFor="let val of filme.spoken_languages">
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title-group>
+                                    <mat-card-title>{{val.name}}</mat-card-title>
+                                    <mat-card-subtitle *ngIf="val.iso_639_1 !== ''"> {{val.english_name}} -
+                                        {{val.iso_639_1 |
+                                        uppercase}}</mat-card-subtitle>
+                                </mat-card-title-group>
+                            </mat-card-header>
+                            <br>
+
+                        </mat-card>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div *ngIf="filme.overview !== null" class="box-container w50 body-sinopse-content">
+                <h2>Produzido <span class="default-color">Por</span></h2>
+
+                <div *ngFor="let val of filme.production_companies">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title-group>
+                                <mat-card-title>{{val.name}}</mat-card-title>
+                                <mat-card-subtitle *ngIf="val.origin_country !== ''">Localização: {{val.origin_country |
+                                    uppercase}}</mat-card-subtitle>
+                                <div *ngIf="val.logo_path !== null" class="img-companie"
+                                    style="background-image: url(https://image.tmdb.org/t/p/w500/{{val.logo_path}});">
+                                </div>
+                            </mat-card-title-group>
+                        </mat-card-header>
+                        <br>
+                    </mat-card>
+                    <br>
+                </div>
+
+            </div>
+        </div>
+        <br>
+    </div>
+
+</section>

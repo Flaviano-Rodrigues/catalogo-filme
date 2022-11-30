@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map } from 'rxjs';
-import { FilmeSingle, PopularFilmes } from './interfaces/Filmes';
+import { Observable, catchError, map, of } from 'rxjs';
+import { FilmeSingleInArray, FilmeSingleToShow, PageFilmes } from './interfaces/Filmes';
 
 
 @Injectable({
@@ -12,21 +12,33 @@ export class FilmesService {
   // https://developers.themoviedb.org/3/movies/get-movie-lists
   // https://material.angular.io/components/toolbar/examples
 
+  private key: string = 'api_key=506fadb0256c13349acc05dabebf9604&language=pt-br&region=BR'
+  private url: string = 'https://api.themoviedb.org/3'
 
-  private url: string = 'https://api.themoviedb.org/3/movie/popular?api_key=506fadb0256c13349acc05dabebf9604&language=pt-br&page=1'
 
-  //Estou esperando um Observable do tipo filmeSingle. porém o que eu recebo é um do tipo PopularFilmes.
-  //Eu retiro oq preciso que é filmeSingle[] do PopularFilmes e retorno um Observable do tipo filmeSingle[]
-  getPopular(): Observable<FilmeSingle[]> {
-    return this.http.get<PopularFilmes>(this.url).pipe(
-      //o map retorna antes de enviar o valor.
+  getPage(route: string, page: number): Observable<FilmeSingleInArray[]> {
+    return this.http.get<PageFilmes>(`${this.url}${route}?${this.key}&page=${page}`).pipe(
       map(val => val.results),
-      catchError(this.handleError())
+      catchError(this.handleError<FilmeSingleInArray[]>([]))
+
     )
+  }
+
+  getSingle(route: string, id: number): Observable<FilmeSingleToShow> {
+    return this.http.get<FilmeSingleToShow>(`${this.url}${route}${id}?${this.key}`).pipe(
+      catchError(this.handleError<FilmeSingleToShow>({} as FilmeSingleToShow))
+    )
+  }
+
+  private handleError<T>(result?: T) {
+    return (): Observable<T> => {
+
+      //Retornando com base na interface que está vindo.
+      return of(result as T);
+    };
 
   }
 
-  private handleError(): any { }
 
   constructor(
     private http: HttpClient,

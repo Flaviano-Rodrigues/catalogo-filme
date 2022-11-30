@@ -8,14 +8,20 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatListModule } from '@angular/material/list';
 import { DrawerComponentsComponent } from './drawer-components/drawer-components.component';
 import { HomeComponent } from './home/home.component';
 import { SearchMovieComponent } from './search-movie/search-movie.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MovieSingleComponent } from './movie-single/movie-single.component';
+import { SnackMessageComponent } from './snack-message/snack-message.component';
+import { GeneroSingleComponent } from './genero-single/genero-single.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +30,9 @@ import { HttpClientModule } from '@angular/common/http';
     DrawerComponentsComponent,
     HomeComponent,
     SearchMovieComponent,
+    MovieSingleComponent,
+    SnackMessageComponent,
+    GeneroSingleComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,8 +40,11 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+    MatCardModule,
     MatIconModule,
     MatSidenavModule,
+    MatSnackBarModule,
+    MatChipsModule,
     MatListModule,
     MatTooltipModule,
     HttpClientModule,

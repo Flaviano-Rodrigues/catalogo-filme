@@ -28,10 +28,10 @@ export class DrawerComponentsComponent {
   ];
   options: Section[] = [
     {
-      name: 'Notificações',
+      name: 'Região',
       route: '/',
-      icon: 'notifications',
-      description: 'Acompanhe as notificações'
+      icon: 'explore',
+      description: 'Veja com base na sua região'
     },
     {
       name: 'Conta',

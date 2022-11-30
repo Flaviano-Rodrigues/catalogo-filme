@@ -1,6 +1,90 @@
 @use 'reset';
 @use 'vars' as vars;
 
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2%;
+    padding-bottom: 15px;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-around {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .default-color {
     color: vars.$defaultColor;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.w50 {
+    width: 49%;
+}
+
+.box-container {
+    background-color: darken($color: #303030, $amount: 5);
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.anchor {
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.inside-poster-information {
+    position: absolute;
+    bottom: 0;
+    font-size: 11px;
+    right: 4px;
+    padding: 1px 6px;
+    border-radius: 5px;
+    background-color: rgba($color: black, $alpha: .5);
+
+    .mat-icon {
+        position: relative;
+        top: 2px;
+        font-size: 13px;
+        width: 13px;
+        height: 13px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .flex,
+    .flex-between,
+    .flex-around,
+    .flex-center {
+        flex-direction: column;
+    }
+
+    .w50 {
+        width: 100%;
+    }
 }

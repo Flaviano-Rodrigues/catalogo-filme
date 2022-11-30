@@ -1,6 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Injectable, Input } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 
+
+@Injectable({
+  providedIn: 'root'
+})
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,6 +13,11 @@ import { MatDrawer } from '@angular/material/sidenav';
 export class HeaderComponent {
 
   @Input() drawer!: MatDrawer;
-  @Input() title!: string;
+  title: string = 'Filmes'
+
+
+  constructor(
+  ) {
+  }
 
 }
