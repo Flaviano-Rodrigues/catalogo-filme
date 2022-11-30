@@ -9,7 +9,6 @@
 
             <div *ngFor="let info of content.content;let index = index">
                 <div routerLink="/filme/{{info.id}}" *ngIf="info.poster_path !== null && index < content.limit"
-                    matTooltip={{info.title}}
                     style="background-image: url(https://image.tmdb.org/t/p/w500{{info.poster_path}});"
                     class="container-list-movies-filmes-content-imgSingle">
                     <p class="inside-poster-information">{{info.vote_average}} <mat-icon matListItemIcon>star</mat-icon>

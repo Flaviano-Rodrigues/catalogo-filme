@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'pesquisar', component: SearchMovieComponent },
   { path: 'filme/:id', component: MovieSingleComponent },
   { path: 'genero/:id', component: GeneroSingleComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: 'catalogo-filme', redirectTo: '', pathMatch: 'full' },
 
 ];
 
