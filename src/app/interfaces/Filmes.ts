@@ -12,6 +12,32 @@ export interface PageFilmes {
     total_results: number
 }
 
+export interface MovieVideos {
+    iso_639_1: string;
+    iso_3166_1: string;
+    name: string;
+    key: string;
+    site: string;
+    size: number;
+    type: string;
+    official: boolean;
+    published_at: Date;
+    id: string;
+}
+
+interface DefaultProvider {
+    display_priority: number,
+    logo_path: string,
+    provider_id: number,
+    provider_name: string
+}
+
+export interface Providers {
+    flatrate: DefaultProvider[];
+    buy: DefaultProvider[];
+    rent: DefaultProvider[];
+}
+
 export interface FilmeSingleToShow {
     adult: boolean,
     backdrop_path: string | null,

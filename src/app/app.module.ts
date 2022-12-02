@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MovieSingleComponent } from './movie-single/movie-single.component';
 import { SnackMessageComponent } from './snack-message/snack-message.component';
 import { GeneroSingleComponent } from './genero-single/genero-single.component';
+import { PosterMovieComponent } from './poster-movie/poster-movie.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { GeneroSingleComponent } from './genero-single/genero-single.component';
     MovieSingleComponent,
     SnackMessageComponent,
     GeneroSingleComponent,
+    PosterMovieComponent,
   ],
   imports: [
     BrowserModule,

@@ -69,11 +69,7 @@ $colorShip: darken($color: #303030, $amount: 5) !important;
     .informacoes {
         ul {
             padding: 0 10px;
-            list-style-position: inside;
-
-            li {
-                margin-bottom: 10px;
-            }
+            list-style: none;
         }
     }
 
@@ -82,6 +78,19 @@ $colorShip: darken($color: #303030, $amount: 5) !important;
         width: 100px;
         height: 70px;
         background-size: contain;
+
+        &-2 {
+            width: 150px;
+            height: 100px;
+        }
+    }
+
+    .first-content {
+        align-items: flex-end;
+    }
+
+    .title-with-link {
+        text-decoration: underline;
     }
 }
 
@@ -112,11 +121,31 @@ $colorShip: darken($color: #303030, $amount: 5) !important;
 
 }
 
+@media screen and (max-width: 768px) {
+    .body {
+        .first-content {
+            &-sinopse {
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 425px) {
     .body {
         .img-companie {
             width: 100px;
             height: 70px;
+
+            &-2 {
+                display: none;
+            }
+        }
+
+        .first-content {
+            &-sinopse {
+                margin-top: 30px;
+            }
         }
     }
 }

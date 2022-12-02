@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
-import { FilmeSingleInArray, FilmeSingleToShow, PageFilmes } from './interfaces/Filmes';
+import { FilmeSingleInArray, FilmeSingleToShow, MovieVideos, PageFilmes, Providers } from './interfaces/Filmes';
 
 
 @Injectable({
@@ -27,6 +27,22 @@ export class FilmesService {
   getSingle(route: string, id: number): Observable<FilmeSingleToShow> {
     return this.http.get<FilmeSingleToShow>(`${this.url}${route}${id}?${this.key}`).pipe(
       catchError(this.handleError<FilmeSingleToShow>({} as FilmeSingleToShow))
+    )
+  }
+
+  getSingleVideos(route: string, id: number): Observable<MovieVideos[]> {
+    return this.http.get<{ results: MovieVideos[] }>(`${this.url}/movie/${id}${route}?${this.key}`).pipe(
+      map(val => val.results),
+      catchError(this.handleError<MovieVideos[]>({} as MovieVideos[]))
+    )
+  }
+
+
+  //Vai retornar vazio se o filme ainda estiver nos cinemas.
+  getSingleProviders(route: string, id: number): Observable<Providers[]> {
+    return this.http.get<{ results: { BR: Providers[] } }>(`${this.url}${route}${id}/watch/providers?${this.key}`).pipe(
+      map(val => val.results.BR),
+      catchError(this.handleError<Providers[]>({} as Providers[]))
     )
   }
 

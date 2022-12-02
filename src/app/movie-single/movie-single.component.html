@@ -29,38 +29,82 @@
             </mat-chip-listbox>
         </div>
 
-        <div class="flex-between">
-            <div></div>
-            <div *ngIf="filme.overview !== null" class="box-container w50 body-sinopse-content">
+        <div class="flex-between first-content">
+            <div class="box-container w50">
+                <h2>Onde <span class="default-color">Assistir</span></h2>
+
+
+            </div>
+            <div *ngIf="filme.overview !== null" class="box-container w50 first-content-sinopse">
                 <h2>Sino<span class="default-color">pse</span></h2>
                 <p>{{filme.overview}}</p>
             </div>
         </div>
+
         <br>
+
         <div class="flex-between">
-            <div class="box-container w50">
-                <h2>Onde <span class="default-color">Assistir</span></h2>
-            </div>
+            <div></div>
             <br>
 
             <div class="box-container informacoes w50">
                 <h2>Principais Informa<span class="default-color">ções</span></h2>
 
                 <ul>
-                    <li><b>Situação:</b> {{filme.status}}</li>
-                    <li><b>Data do Lançamento:</b> {{filme.release_date | date:'dd/MM/YYYY'}}</li>
-                    <li><b>Titulo Original:</b> {{filme.original_title}}</li>
-                    <li><b>Populariade: </b> {{filme.popularity}}</li>
-                    <li><b>Avaliado: </b> {{filme.vote_count}} vezes</li>
-                    <li><b>Lingua Original:</b> {{filme.original_language | uppercase}}</li>
-                    <li><b>Filme Adulto:</b> {{filme.adult?'Sim':'Não'}}</li>
+                    <div>
+                        <li><b>Situação:</b> </li>
+                        <li>{{filme.status}}</li>
+                        <br>
+                    </div>
+                    <div>
+                        <li><b>Data do Lançamento:</b></li>
+                        <li>{{filme.release_date | date:'dd/MM/YYYY'}}</li>
+                        <br>
+                    </div>
+                    <div>
+                        <li><b>Titulo Original:</b></li>
+                        <li>{{filme.original_title}}</li>
+                        <br>
+                    </div>
+                    <div *ngIf="filme.budget > 0">
+                        <li><b>Orçamento:</b> </li>
+                        <li>{{filme.budget | currency}}</li>
+                        <br>
+                    </div>
+                    <div *ngIf="filme.revenue > 0">
+                        <li><b>Receita:</b> </li>
+                        <li>{{filme.revenue| currency}}</li>
+                        <br>
+                    </div>
+                    <div>
+                        <li><b>Populariade: </b> </li>
+                        <li>{{filme.popularity}}</li>
+                        <br>
+                    </div>
+                    <div>
+                        <li><b>Avaliado: </b> </li>
+                        <li>{{filme.vote_count}} vezes</li>
+                        <br>
+                    </div>
+                    <div>
+                        <li><b>Lingua Original:</b> </li>
+                        <li>{{filme.original_language | uppercase}}</li>
+                        <br>
+                    </div>
+                    <div>
+                        <li><b>Filme Adulto:</b> </li>
+                        <li>{{filme.adult?'Sim':'Não'}}</li>
+                        <br>
+                    </div>
 
                     <li *ngIf="filme.homepage !== null && filme.homepage !== ''"><a class="anchor" target="_blank"
                             [href]="filme.homepage">Website</a></li>
                 </ul>
             </div>
         </div>
+
         <br>
+
         <div class="flex-between" style="align-items: flex-start">
             <div class="flex-column w50">
                 <div class="box-container w100">
@@ -102,8 +146,10 @@
                     </div>
                 </div>
             </div>
+
             <br>
-            <div *ngIf="filme.overview !== null" class="box-container w50 body-sinopse-content">
+
+            <div *ngIf="filme.overview !== null" class="box-container w50 ">
                 <h2>Produzido <span class="default-color">Por</span></h2>
 
                 <div *ngFor="let val of filme.production_companies">
@@ -114,7 +160,7 @@
                                 <mat-card-subtitle *ngIf="val.origin_country !== ''">Localização: {{val.origin_country |
                                     uppercase}}</mat-card-subtitle>
                                 <div *ngIf="val.logo_path !== null" class="img-companie"
-                                    style="background-image: url(https://image.tmdb.org/t/p/w500/{{val.logo_path}});">
+                                    style="background-image: url('https://image.tmdb.org/t/p/w500/{{val.logo_path}}');">
                                 </div>
                             </mat-card-title-group>
                         </mat-card-header>
@@ -125,6 +171,54 @@
 
             </div>
         </div>
+
+        <br>
+
+        <div *ngIf="videos!== undefined" class="flex-between">
+            <div *ngIf="videos.length > 0" class="box-container w100 ">
+                <h2>Alguns<span class="default-color"> Videos</span></h2>
+
+                <div *ngFor="let val of videos">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title-group>
+
+                                <mat-card-title>
+                                    {{val.name}}
+                                </mat-card-title>
+                                <mat-card-subtitle>
+                                    Publicado: {{val.published_at | date:'dd/MM/YYYY'}}
+                                    <br>
+                                    <a class="title-with-link" *ngIf="val.site === 'YouTube'" target="_blank"
+                                        href="https://www.youtube.com/watch?v={{val.key}}">
+                                        Assistir
+                                    </a>
+                                </mat-card-subtitle>
+                                <div class="img-companie img-companie-2"
+                                    style="background-image: url('https://img.youtube.com/vi/{{val.key}}/sddefault.jpg');">
+                                </div>
+
+                            </mat-card-title-group>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <mat-chip-listbox>
+                                <mat-chip-option selectable={{false}}>{{val.iso_639_1 + '-' + val.iso_3166_1 |
+                                    uppercase}}</mat-chip-option>
+                                <mat-chip-option selectable={{false}}>{{val.site}}</mat-chip-option>
+                                <mat-chip-option selectable={{false}}>{{val.type}}</mat-chip-option>
+                                <mat-chip-option *ngIf="val.official" selectable={{false}}>Oficial</mat-chip-option>
+                                <mat-chip-option *ngIf="!val.official" selectable={{false}}>Não Oficial
+                                </mat-chip-option>
+
+                            </mat-chip-listbox>
+                        </mat-card-content>
+                        <br>
+                    </mat-card>
+                    <br>
+                </div>
+            </div>
+        </div>
+
         <br>
     </div>
 
