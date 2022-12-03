@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FilmesService } from '../filmes.service';
-import { FilmeSingleToShow, MovieVideos, Providers } from '../interfaces/Filmes';
+import { FilmeSingleInArray, FilmeSingleToShow, MovieVideos, Providers, } from '../interfaces/Filmes';
 import { Location } from '@angular/common';
 import { SnackMessageComponent } from '../snack-message/snack-message.component';
 
@@ -12,12 +12,20 @@ import { SnackMessageComponent } from '../snack-message/snack-message.component'
 })
 export class MovieSingleComponent {
 
-  filme?: FilmeSingleToShow
-  videos?: MovieVideos[]
-  providers?: Providers[]
+  filme!: FilmeSingleToShow
+  videos!: MovieVideos[]
+  providers!: Providers
+  recommendations!: FilmeSingleInArray[]
 
   ngOnInit(): void {
     this.getFilme()
+  }
+
+  changeMovie(): void {
+    this.location.onUrlChange(() => {
+      this.snack('Carregando...')
+      window.location.reload()
+    })
   }
 
   getFilme(): void {
@@ -32,9 +40,12 @@ export class MovieSingleComponent {
           this.videos = val2
         })
 
-        this.filmesService.getSingleProviders('/movie/', id).subscribe((val3: Providers[]) => {
-          this.providers = val3
-          console.log(this.providers)
+        this.filmesService.getSingleProviders('/movie/', id).subscribe((val3: Providers) => {
+          this.providers = this.byPriority(val3)
+        })
+
+        this.filmesService.getSingleRecommendations('/movie/', id, 1).subscribe((val4: FilmeSingleInArray[]) => {
+          this.recommendations = val4
         })
 
       } else {
@@ -44,6 +55,17 @@ export class MovieSingleComponent {
 
 
     })
+  }
+
+  private byPriority(val: Providers) {
+
+    if (val !== undefined) {
+      if (val.buy !== undefined) val.buy = val.buy.reverse()
+      if (val.flatrate !== undefined) val.flatrate = val.flatrate.reverse()
+      if (val.rent !== undefined) val.rent = val.rent.reverse()
+    }
+
+    return val
   }
 
   snack(message: string): void {

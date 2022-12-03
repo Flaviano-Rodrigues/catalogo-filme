@@ -39,10 +39,17 @@ export class FilmesService {
 
 
   //Vai retornar vazio se o filme ainda estiver nos cinemas.
-  getSingleProviders(route: string, id: number): Observable<Providers[]> {
-    return this.http.get<{ results: { BR: Providers[] } }>(`${this.url}${route}${id}/watch/providers?${this.key}`).pipe(
+  getSingleProviders(route: string, id: number): Observable<Providers> {
+    return this.http.get<{ results: { BR: Providers } }>(`${this.url}${route}${id}/watch/providers?${this.key}`).pipe(
       map(val => val.results.BR),
-      catchError(this.handleError<Providers[]>({} as Providers[]))
+      catchError(this.handleError<Providers>({} as Providers))
+    )
+  }
+
+  getSingleRecommendations(route: string, id: number, page: number): Observable<FilmeSingleInArray[]> {
+    return this.http.get<PageFilmes>(`${this.url}${route}${id}/recommendations?${this.key}&page=${page}`).pipe(
+      map(val => val.results),
+      catchError(this.handleError<FilmeSingleInArray[]>({} as FilmeSingleInArray[]))
     )
   }
 

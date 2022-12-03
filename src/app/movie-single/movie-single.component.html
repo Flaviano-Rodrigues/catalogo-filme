@@ -1,7 +1,7 @@
 <section *ngIf="filme !== undefined">
-    <div style="background-image: url(https://image.tmdb.org/t/p/original{{filme.backdrop_path}});" class="header">
+    <div style="background-image: url('https://image.tmdb.org/t/p/original{{filme.backdrop_path}}');" class="header">
         <div class="header-grid">
-            <div style="background-image: url(https://image.tmdb.org/t/p/w500{{filme.poster_path}});"
+            <div style="background-image: url('https://image.tmdb.org/t/p/w500{{filme.poster_path}}');"
                 class="header-grid-imgSingle">
                 <p class="inside-poster-information inside-information-movie-single">{{filme.vote_average}} <mat-icon
                         matListItemIcon>star</mat-icon>
@@ -31,9 +31,7 @@
 
         <div class="flex-between first-content">
             <div class="box-container w50">
-                <h2>Onde <span class="default-color">Assistir</span></h2>
-
-
+                <!-- <h2>Onde <span class="default-color">Assistir</span></h2> -->
             </div>
             <div *ngIf="filme.overview !== null" class="box-container w50 first-content-sinopse">
                 <h2>Sino<span class="default-color">pse</span></h2>
@@ -44,10 +42,40 @@
         <br>
 
         <div class="flex-between">
-            <div></div>
+            <div *ngIf="providers !== undefined" class="box-container w50">
+                <h2>Onde <span class="default-color">Assistir</span></h2>
+
+                <div *ngIf="providers.buy !== undefined" class="body-content-providers">
+                    <h2>Comprar</h2>
+                    <div class="body-content-providers-for">
+                        <div *ngFor="let val of providers.buy"
+                            style="background-image: url('https://image.tmdb.org/t/p/w200{{val.logo_path}}');"
+                            class="body-content-providers-for-single"></div>
+                    </div>
+                </div>
+
+                <div *ngIf="providers.flatrate !== undefined" class="body-content-providers">
+                    <h2>Stream</h2>
+                    <div class="body-content-providers-for">
+                        <div *ngFor="let val of providers.flatrate"
+                            style="background-image: url('https://image.tmdb.org/t/p/w200{{val.logo_path}}');"
+                            class="body-content-providers-for-single"></div>
+                    </div>
+                </div>
+
+                <div *ngIf="providers.rent !== undefined" class="body-content-providers">
+                    <h2>Alugar</h2>
+                    <div class="body-content-providers-for">
+                        <div *ngFor="let val of providers.rent"
+                            style="background-image: url('https://image.tmdb.org/t/p/w200{{val.logo_path}}');"
+                            class="body-content-providers-for-single"></div>
+                    </div>
+                </div>
+            </div>
             <br>
 
-            <div class="box-container informacoes w50">
+            <div [class.w100]="providers === undefined" [class.w50]="providers !== undefined"
+                class="box-container informacoes w50">
                 <h2>Principais Informa<span class="default-color">ções</span></h2>
 
                 <ul>
@@ -215,6 +243,20 @@
                         <br>
                     </mat-card>
                     <br>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="flex-between">
+            <div class="box-container w100">
+                <h2>Acredito que goste <span class="default-color">desses</span></h2>
+
+                <div class="body-recommended-movies">
+                    <div *ngFor="let info of recommendations;let index = index">
+                        <app-poster-movie *ngIf="info.poster_path !== null && index < 21" [info]="info">
+                        </app-poster-movie>
+                    </div>
                 </div>
             </div>
         </div>

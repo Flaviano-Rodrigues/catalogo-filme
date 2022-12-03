@@ -66,6 +66,30 @@ $colorShip: darken($color: #303030, $amount: 5) !important;
         }
     }
 
+    &-recommended-movies {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    &-content-providers {
+        margin-top: 20px;
+
+        &-for {
+            display: flex;
+            flex-wrap: wrap;
+
+            &-single {
+                @extend %defaults-to-img;
+                width: 40px;
+                height: 40px;
+                border-radius: 5px;
+                margin: 0 5px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
     .informacoes {
         ul {
             padding: 0 10px;
