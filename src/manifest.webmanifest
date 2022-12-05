@@ -1,8 +1,8 @@
 {
-  "name": "catalogo-filme",
-  "short_name": "catalogo-filme",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "Catalogo de Fiolmes",
+  "short_name": "Catalogo",
+  "theme_color": "#333",
+  "background_color": "#333",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

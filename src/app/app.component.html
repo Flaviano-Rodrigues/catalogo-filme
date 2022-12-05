@@ -1,12 +1,12 @@
 <mat-drawer-container autosize>
-    <mat-drawer #drawer class="sidenav" mode="over">
-        <app-drawer-components></app-drawer-components>
+    <mat-drawer #drawer class="sidenav" mode="push">
+        <app-drawer-components [drawer]="drawer"></app-drawer-components>
     </mat-drawer>
 
-    <app-header title="Catálogo" [drawer]="drawer"></app-header>
+    <app-header [drawer]="drawer"></app-header>
 
-    <div class="sidenav-content">
-
+    <div class="app-content container">
+        <router-outlet></router-outlet>
     </div>
 
 </mat-drawer-container>

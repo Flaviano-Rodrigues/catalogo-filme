@@ -3,13 +3,13 @@
         <button (click)="drawer.toggle()" mat-icon-button class="example-icon">
             <mat-icon>menu</mat-icon>
         </button>
-        <span>{{title}}</span>
+        <span>FILMES</span>
         <div>
-            <button mat-icon-button class="example-icon favorite-icon">
-                <mat-icon>favorite</mat-icon>
-            </button>
-            <button mat-icon-button class="example-icon">
+            <button (click)="share()" mat-icon-button class="example-icon favorite-icon">
                 <mat-icon>share</mat-icon>
+            </button>
+            <button routerLink="/pesquisar" mat-icon-button class="example-icon">
+                <mat-icon>search</mat-icon>
             </button>
         </div>
     </mat-toolbar>

@@ -1,0 +1,18 @@
+<div class="container-list-movies">
+
+    <div *ngFor="let content of homeContent">
+        <br><br>
+
+        <h1>{{content.beforeTitle}} <span class="default-color">{{content.title}}</span> {{content.afterTitle}}</h1>
+
+        <div class="container-list-movies-filmes-content">
+
+            <div *ngFor="let info of content.content;let index = index">
+                <app-poster-movie *ngIf="info.poster_path !== null && index < content.limit" [info]="info">
+                </app-poster-movie>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+</div>

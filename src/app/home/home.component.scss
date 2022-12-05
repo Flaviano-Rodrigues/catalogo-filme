@@ -1,0 +1,9 @@
+.container-list-movies {
+    margin-top: 40px;
+
+    &-filmes-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
