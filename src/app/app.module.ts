@@ -10,6 +10,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatChipsModule } from '@angular/material/chips';
@@ -47,6 +48,7 @@ import { PosterMovieComponent } from './poster-movie/poster-movie.component';
     MatSidenavModule,
     MatSnackBarModule,
     MatChipsModule,
+    MatExpansionModule,
     MatListModule,
     MatTooltipModule,
     HttpClientModule,

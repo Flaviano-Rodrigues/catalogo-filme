@@ -51,6 +51,10 @@
     padding: 15px;
 }
 
+.black-default {
+    background-color: darken($color: #303030, $amount: 5);
+}
+
 .anchor {
     &:hover {
         text-decoration: underline;

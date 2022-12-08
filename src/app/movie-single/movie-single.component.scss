@@ -116,6 +116,24 @@ $colorShip: darken($color: #303030, $amount: 5) !important;
     .title-with-link {
         text-decoration: underline;
     }
+
+    &-comentarios {
+        font-size: 20px;
+    }
+
+    .title-filme {
+        margin: 0;
+    }
+
+    &-with-recommendations {
+        padding: 0;
+        padding-top: 15px;
+        padding-bottom: 25px;
+
+        h2 {
+            margin-left: 20px;
+        }
+    }
 }
 
 @media screen and (max-width: 768px) {

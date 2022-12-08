@@ -3,8 +3,8 @@
         <div class="header-grid">
             <div style="background-image: url('https://image.tmdb.org/t/p/w500{{filme.poster_path}}');"
                 class="header-grid-imgSingle">
-                <p class="inside-poster-information inside-information-movie-single">{{filme.vote_average}} <mat-icon
-                        matListItemIcon>star</mat-icon>
+                <p class="inside-poster-information inside-information-movie-single">{{filme.vote_average}}
+                    <mat-icon matListItemIcon>star</mat-icon>
                 </p>
             </div>
         </div>
@@ -31,7 +31,7 @@
 
         <div class="flex-between first-content">
             <div class="box-container w50">
-                <!-- <h2>Onde <span class="default-color">Assistir</span></h2> -->
+                <h2 class="title-filme">{{filme.title}}</h2>
             </div>
             <div *ngIf="filme.overview !== null" class="box-container w50 first-content-sinopse">
                 <h2>Sino<span class="default-color">pse</span></h2>
@@ -164,7 +164,8 @@
                                     <mat-card-title>{{val.name}}</mat-card-title>
                                     <mat-card-subtitle *ngIf="val.iso_639_1 !== ''"> {{val.english_name}} -
                                         {{val.iso_639_1 |
-                                        uppercase}}</mat-card-subtitle>
+                                        uppercase}}
+                                    </mat-card-subtitle>
                                 </mat-card-title-group>
                             </mat-card-header>
                             <br>
@@ -198,6 +199,46 @@
                 </div>
 
             </div>
+        </div>
+
+        <br>
+        <div class="flex-between">
+            <mat-accordion class="w100">
+                <mat-expansion-panel class="black-default" (opened)="panelOpenState = true"
+                    (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header class="body-comentarios">
+                        <mat-panel-title>
+                            Comentários
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title-group>
+
+                                <mat-card-title>
+                                    a
+                                </mat-card-title>
+                                <mat-card-subtitle>
+                                    Publicado:
+                                    <br>
+                                </mat-card-subtitle>
+                                <div class="img-companie img-companie-2"
+                                    style="background-image: url('https://material.angular.io/assets/img/examples/shiba2.jpg');">
+                                </div>
+
+                            </mat-card-title-group>
+                        </mat-card-header>
+                        <mat-card-content>
+
+                        </mat-card-content>
+                        <br>
+                    </mat-card>
+
+
+
+                </mat-expansion-panel>
+            </mat-accordion>
         </div>
 
         <br>
@@ -249,7 +290,7 @@
 
         <br>
         <div class="flex-between">
-            <div class="box-container w100">
+            <div *ngIf="recommendations !== undefined" class="box-container w100 body-with-recommendations">
                 <h2>Acredito que goste <span class="default-color">desses</span></h2>
 
                 <div class="body-recommended-movies">
@@ -262,6 +303,7 @@
         </div>
 
         <br>
+
     </div>
 
 </section>

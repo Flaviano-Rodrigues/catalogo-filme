@@ -15,7 +15,8 @@ export class MovieSingleComponent {
   filme!: FilmeSingleToShow
   videos!: MovieVideos[]
   providers!: Providers
-  recommendations!: FilmeSingleInArray[]
+  recommendations?: FilmeSingleInArray[]
+  panelOpenState = false;
 
   ngOnInit(): void {
     this.getFilme()
