@@ -29,17 +29,15 @@
             </mat-chip-listbox>
         </div>
 
-        <div class="flex-between first-content">
+        <div class="flex-between body-first-content">
             <div class="box-container w50">
-                <h2 class="title-filme">{{filme.title}}</h2>
+                <h2 class="body-title-filme">{{filme.title}}</h2>
             </div>
-            <div *ngIf="filme.overview !== null" class="box-container w50 first-content-sinopse">
+            <div *ngIf="filme.overview !== null" class="box-container w50 body-first-content-sinopse">
                 <h2>Sino<span class="default-color">pse</span></h2>
                 <p>{{filme.overview}}</p>
             </div>
         </div>
-
-        <br>
 
         <div class="flex-between">
             <div *ngIf="providers !== undefined" class="box-container w50">
@@ -75,7 +73,7 @@
             <br>
 
             <div [class.w100]="providers === undefined" [class.w50]="providers !== undefined"
-                class="box-container informacoes w50">
+                class="box-container body-informacoes w50">
                 <h2>Principais Informa<span class="default-color">ções</span></h2>
 
                 <ul>
@@ -131,7 +129,6 @@
             </div>
         </div>
 
-        <br>
 
         <div class="flex-between" style="align-items: flex-start">
             <div class="flex-column w50">
@@ -188,7 +185,7 @@
                                 <mat-card-title>{{val.name}}</mat-card-title>
                                 <mat-card-subtitle *ngIf="val.origin_country !== ''">Localização: {{val.origin_country |
                                     uppercase}}</mat-card-subtitle>
-                                <div *ngIf="val.logo_path !== null" class="img-companie"
+                                <div *ngIf="val.logo_path !== null" class="body-img-companie"
                                     style="background-image: url('https://image.tmdb.org/t/p/w500/{{val.logo_path}}');">
                                 </div>
                             </mat-card-title-group>
@@ -201,39 +198,46 @@
             </div>
         </div>
 
-        <br>
-        <div class="flex-between">
+        <div *ngIf="comentarios !== undefined && comentarios.length > 0" class="flex-between">
             <mat-accordion class="w100">
                 <mat-expansion-panel class="black-default" (opened)="panelOpenState = true"
                     (closed)="panelOpenState = false">
                     <mat-expansion-panel-header class="body-comentarios">
                         <mat-panel-title>
-                            Comentários
+                            Avaliações
                         </mat-panel-title>
                     </mat-expansion-panel-header>
 
-                    <mat-card>
-                        <mat-card-header>
-                            <mat-card-title-group>
+                    <div *ngFor="let single of comentarios">
+                        <mat-card class="body-comentarios-single">
+                            <mat-card-header>
+                                <mat-card-title-group>
 
-                                <mat-card-title>
-                                    a
-                                </mat-card-title>
-                                <mat-card-subtitle>
-                                    Publicado:
-                                    <br>
-                                </mat-card-subtitle>
-                                <div class="img-companie img-companie-2"
-                                    style="background-image: url('https://material.angular.io/assets/img/examples/shiba2.jpg');">
-                                </div>
+                                    <mat-card-title>
+                                        <div class="body-comentarios-single-header">
+                                            <div *ngIf="single.author_details.avatar_path !== null"
+                                                style="background-image: url('https://image.tmdb.org/t/p/w200{{single.author_details.avatar_path}}');"
+                                                class="body-comentarios-single-header-photo"></div>
+                                            {{single.author}}<span *ngIf="single.author_details.rating !== null"> -
+                                                {{single.author_details.rating}}/10 <mat-icon
+                                                    class="body-comentarios-single-header-star">star
+                                                </mat-icon>
+                                            </span>
+                                        </div>
+                                    </mat-card-title>
+                                    <mat-card-subtitle>
+                                        <small>{{single.created_at | date:'dd/MM/yyyy'}} -
+                                            {{single.created_at | date:'HH:mm'}}</small>
 
-                            </mat-card-title-group>
-                        </mat-card-header>
-                        <mat-card-content>
-
-                        </mat-card-content>
-                        <br>
-                    </mat-card>
+                                    </mat-card-subtitle>
+                                </mat-card-title-group>
+                            </mat-card-header>
+                            <mat-card-content class="mt-t-10">
+                                {{single.content}}
+                            </mat-card-content>
+                            <br>
+                        </mat-card>
+                    </div>
 
 
 
@@ -241,56 +245,72 @@
             </mat-accordion>
         </div>
 
-        <br>
 
-        <div *ngIf="videos!== undefined" class="flex-between">
-            <div *ngIf="videos.length > 0" class="box-container w100 ">
-                <h2>Alguns<span class="default-color"> Videos</span></h2>
+        <div class="flex-between" *ngIf="videos!== undefined && videos.length > 0">
 
-                <div *ngFor="let val of videos">
-                    <mat-card>
-                        <mat-card-header>
-                            <mat-card-title-group>
+            <mat-accordion class="w100">
+                <mat-expansion-panel [expanded]="true" class="black-default" (opened)="panelOpenState = true"
+                    (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header class="body-comentarios">
+                        <mat-panel-title>
+                            <h2 class="reset">Alguns<span class="default-color"> Videos</span></h2>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
 
-                                <mat-card-title>
-                                    {{val.name}}
-                                </mat-card-title>
-                                <mat-card-subtitle>
-                                    Publicado: {{val.published_at | date:'dd/MM/YYYY'}}
-                                    <br>
-                                    <a class="title-with-link" *ngIf="val.site === 'YouTube'" target="_blank"
-                                        href="https://www.youtube.com/watch?v={{val.key}}">
-                                        Assistir
-                                    </a>
-                                </mat-card-subtitle>
-                                <div class="img-companie img-companie-2"
-                                    style="background-image: url('https://img.youtube.com/vi/{{val.key}}/sddefault.jpg');">
-                                </div>
+                    <div class="w100 ">
 
-                            </mat-card-title-group>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <mat-chip-listbox>
-                                <mat-chip-option selectable={{false}}>{{val.iso_639_1 + '-' + val.iso_3166_1 |
-                                    uppercase}}</mat-chip-option>
-                                <mat-chip-option selectable={{false}}>{{val.site}}</mat-chip-option>
-                                <mat-chip-option selectable={{false}}>{{val.type}}</mat-chip-option>
-                                <mat-chip-option *ngIf="val.official" selectable={{false}}>Oficial</mat-chip-option>
-                                <mat-chip-option *ngIf="!val.official" selectable={{false}}>Não Oficial
-                                </mat-chip-option>
+                        <div *ngFor="let val of videos">
+                            <mat-card>
+                                <mat-card-header>
+                                    <mat-card-title-group>
 
-                            </mat-chip-listbox>
-                        </mat-card-content>
-                        <br>
-                    </mat-card>
-                    <br>
-                </div>
-            </div>
+                                        <mat-card-title>
+                                            {{val.name}}
+                                        </mat-card-title>
+                                        <mat-card-subtitle>
+                                            Publicado: {{val.published_at | date:'dd/MM/YYYY'}}
+                                            <br>
+                                            <a class="body-title-with-link" *ngIf="val.site === 'YouTube'"
+                                                target="_blank" href="https://www.youtube.com/watch?v={{val.key}}">
+                                                Assistir
+                                            </a>
+                                        </mat-card-subtitle>
+                                        <div class="body-img-companie body-img-companie-2"
+                                            style="background-image: url('https://img.youtube.com/vi/{{val.key}}/sddefault.jpg');">
+                                        </div>
+
+                                    </mat-card-title-group>
+                                </mat-card-header>
+                                <mat-card-content>
+                                    <div class="body-content-chipInVideos">
+                                        <mat-chip-listbox>
+                                            <mat-chip-option selectable={{false}}>
+                                                {{val.iso_639_1 + '-' + val.iso_3166_1 | uppercase}}
+                                            </mat-chip-option>
+                                            <mat-chip-option selectable={{false}}>{{val.site}}</mat-chip-option>
+                                            <mat-chip-option selectable={{false}}>{{val.type}}</mat-chip-option>
+                                            <mat-chip-option *ngIf="val.official" selectable={{false}}>Oficial
+                                            </mat-chip-option>
+                                            <mat-chip-option *ngIf="!val.official" selectable={{false}}>Não Oficial
+                                            </mat-chip-option>
+
+                                        </mat-chip-listbox>
+                                    </div>
+                                </mat-card-content>
+                                <br>
+                            </mat-card>
+                            <br>
+                        </div>
+                    </div>
+
+                </mat-expansion-panel>
+            </mat-accordion>
+
+
         </div>
 
-        <br>
-        <div class="flex-between">
-            <div *ngIf="recommendations !== undefined" class="box-container w100 body-with-recommendations">
+        <div *ngIf="recommendations !== undefined && recommendations.length > 0" class="flex-between">
+            <div class="box-container w100 body-with-recommendations">
                 <h2>Acredito que goste <span class="default-color">desses</span></h2>
 
                 <div class="body-recommended-movies">
@@ -301,8 +321,6 @@
                 </div>
             </div>
         </div>
-
-        <br>
 
     </div>
 

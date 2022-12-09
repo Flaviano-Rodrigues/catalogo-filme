@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
-import { FilmeSingleInArray, FilmeSingleToShow, MovieVideos, PageFilmes, Providers } from './interfaces/Filmes';
+import { Comentario, FilmeSingleInArray, FilmeSingleToShow, MovieVideos, PageFilmes, Providers } from './interfaces/Filmes';
 
 
 @Injectable({
@@ -50,6 +50,13 @@ export class FilmesService {
     return this.http.get<PageFilmes>(`${this.url}${route}${id}/recommendations?${this.key}&page=${page}`).pipe(
       map(val => val.results),
       catchError(this.handleError<FilmeSingleInArray[]>({} as FilmeSingleInArray[]))
+    )
+  }
+
+  getSingleComments(route: string, id: number, page: number): Observable<Comentario[]> {
+    return this.http.get<{ results: Comentario[] }>(`${this.url}${route}${id}/reviews?${this.key}&page=${page}`).pipe(
+      map(val => val.results),
+      catchError(this.handleError<Comentario[]>({} as Comentario[]))
     )
   }
 

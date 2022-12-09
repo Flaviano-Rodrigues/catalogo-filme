@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'filme/:id', component: MovieSingleComponent, },
   { path: 'filmes/:id', component: MovieSingleComponent },
   { path: 'genero/:id', component: GeneroSingleComponent },
+  { path: 'catalogo-filme', redirectTo: '', pathMatch: 'full' },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 
 ];

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FilmesService } from '../filmes.service';
-import { FilmeSingleInArray, FilmeSingleToShow, MovieVideos, Providers, } from '../interfaces/Filmes';
+import { Comentario, FilmeSingleInArray, FilmeSingleToShow, MovieVideos, Providers, } from '../interfaces/Filmes';
 import { Location } from '@angular/common';
 import { SnackMessageComponent } from '../snack-message/snack-message.component';
 
@@ -15,8 +15,9 @@ export class MovieSingleComponent {
   filme!: FilmeSingleToShow
   videos!: MovieVideos[]
   providers!: Providers
-  recommendations?: FilmeSingleInArray[]
+  recommendations!: FilmeSingleInArray[]
   panelOpenState = false;
+  comentarios!: Comentario[]
 
   ngOnInit(): void {
     this.getFilme()
@@ -47,6 +48,10 @@ export class MovieSingleComponent {
 
         this.filmesService.getSingleRecommendations('/movie/', id, 1).subscribe((val4: FilmeSingleInArray[]) => {
           this.recommendations = val4
+        })
+
+        this.filmesService.getSingleComments('/movie/', id, 1).subscribe((val5: Comentario[]) => {
+          this.comentarios = val5
         })
 
       } else {
