@@ -134,14 +134,13 @@ $colorShip: darken($color: #303030, $amount: 5) !important;
                     display: inline-block;
                     margin-right: 10px;
                 }
-
-                &-star {
-                    position: relative;
-                    top: 8px;
-                    font-size: 18px;
-                }
             }
 
+            &-star {
+                position: relative;
+                top: 13px;
+                font-size: 13px;
+            }
 
         }
     }
@@ -230,5 +229,19 @@ $colorShip: darken($color: #303030, $amount: 5) !important;
             display: none;
         }
 
+        &-comentarios {
+
+            &-single {
+
+                &-header {
+
+
+                    &-photo {
+                        display: none;
+                    }
+                }
+
+            }
+        }
     }
 }

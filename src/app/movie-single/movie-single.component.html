@@ -218,16 +218,19 @@
                                             <div *ngIf="single.author_details.avatar_path !== null"
                                                 style="background-image: url('https://image.tmdb.org/t/p/w200{{single.author_details.avatar_path}}');"
                                                 class="body-comentarios-single-header-photo"></div>
-                                            {{single.author}}<span *ngIf="single.author_details.rating !== null"> -
-                                                {{single.author_details.rating}}/10 <mat-icon
-                                                    class="body-comentarios-single-header-star">star
-                                                </mat-icon>
-                                            </span>
+                                            {{single.author}}
                                         </div>
                                     </mat-card-title>
                                     <mat-card-subtitle>
                                         <small>{{single.created_at | date:'dd/MM/yyyy'}} -
-                                            {{single.created_at | date:'HH:mm'}}</small>
+                                            {{single.created_at | date:'HH:mm'}} -
+                                            <span *ngIf="single.author_details.rating !== null">
+                                                {{single.author_details.rating}}/10 <mat-icon
+                                                    class="body-comentarios-single-star">star
+                                                </mat-icon>
+                                            </span>
+                                        </small>
+
 
                                     </mat-card-subtitle>
                                 </mat-card-title-group>
