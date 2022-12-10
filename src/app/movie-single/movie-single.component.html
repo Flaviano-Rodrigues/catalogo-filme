@@ -140,8 +140,9 @@
                             <mat-card-header>
                                 <mat-card-title-group>
                                     <mat-card-title>{{val.name}}</mat-card-title>
-                                    <mat-card-subtitle *ngIf="val.iso_3166_1 !== ''">Localização: {{val.iso_3166_1 |
-                                        uppercase}}</mat-card-subtitle>
+                                    <mat-card-subtitle *ngIf="val.iso_3166_1 !== ''">Localização:
+                                        {{val.iso_3166_1 |
+                                                uppercase}}</mat-card-subtitle>
                                 </mat-card-title-group>
                             </mat-card-header>
                             <br>
@@ -161,7 +162,7 @@
                                     <mat-card-title>{{val.name}}</mat-card-title>
                                     <mat-card-subtitle *ngIf="val.iso_639_1 !== ''"> {{val.english_name}} -
                                         {{val.iso_639_1 |
-                                        uppercase}}
+                                                uppercase}}
                                     </mat-card-subtitle>
                                 </mat-card-title-group>
                             </mat-card-header>
@@ -183,8 +184,9 @@
                         <mat-card-header>
                             <mat-card-title-group>
                                 <mat-card-title>{{val.name}}</mat-card-title>
-                                <mat-card-subtitle *ngIf="val.origin_country !== ''">Localização: {{val.origin_country |
-                                    uppercase}}</mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="val.origin_country !== ''">Localização:
+                                    {{val.origin_country |
+                                            uppercase}}</mat-card-subtitle>
                                 <div *ngIf="val.logo_path !== null" class="body-img-companie"
                                     style="background-image: url('https://image.tmdb.org/t/p/w500/{{val.logo_path}}');">
                                 </div>
@@ -222,8 +224,11 @@
                                         </div>
                                     </mat-card-title>
                                     <mat-card-subtitle>
-                                        <small>{{single.created_at | date:'dd/MM/yyyy'}} -
-                                            {{single.created_at | date:'HH:mm'}} -
+                                        <small>
+                                            {{single.created_at | date:'dd/MM/yyyy'}} -
+
+                                            {{single.created_at | date:'HH:mm'}} |
+
                                             <span *ngIf="single.author_details.rating !== null">
                                                 {{single.author_details.rating}}/10 <mat-icon
                                                     class="body-comentarios-single-star">star
@@ -294,7 +299,8 @@
                                             <mat-chip-option selectable={{false}}>{{val.type}}</mat-chip-option>
                                             <mat-chip-option *ngIf="val.official" selectable={{false}}>Oficial
                                             </mat-chip-option>
-                                            <mat-chip-option *ngIf="!val.official" selectable={{false}}>Não Oficial
+                                            <mat-chip-option *ngIf="!val.official" selectable={{false}}>Não
+                                                Oficial
                                             </mat-chip-option>
 
                                         </mat-chip-listbox>

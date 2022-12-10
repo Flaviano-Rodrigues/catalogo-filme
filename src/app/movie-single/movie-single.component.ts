@@ -18,6 +18,7 @@ export class MovieSingleComponent {
   recommendations!: FilmeSingleInArray[]
   panelOpenState = false;
   comentarios!: Comentario[]
+  // images?: Images
 
   ngOnInit(): void {
     this.getFilme()
@@ -53,6 +54,11 @@ export class MovieSingleComponent {
         this.filmesService.getSingleComments('/movie/', id, 1).subscribe((val5: Comentario[]) => {
           this.comentarios = val5
         })
+
+        // this.filmesService.getSingleImages('/movie/', id,).subscribe((val6: Images) => {
+        //   this.images = val6
+        //   console.log(val6)
+        // })
 
       } else {
         this.location.back()

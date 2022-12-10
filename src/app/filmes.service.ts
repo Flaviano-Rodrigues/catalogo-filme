@@ -60,6 +60,20 @@ export class FilmesService {
     )
   }
 
+  //pega as imagens. (Não está sendo usado)
+  // getSingleImages(route: string, id: number): Observable<Images> {
+  //   return this.http.get<Images>(`${this.url}${route}${id}/images?${this.key}`).pipe(
+  //     catchError(this.handleError<Images>({} as Images))
+  //   )
+  // }
+
+  search(route: string, query: string, page: number): Observable<FilmeSingleInArray[]> {
+    return this.http.get<PageFilmes>(`${this.url}/search${route}?${this.key}&page=${page}&include_adult=false&query=${query}`).pipe(
+      map(val => val.results),
+      catchError(this.handleError<FilmeSingleInArray[]>({} as FilmeSingleInArray[]))
+    )
+  }
+
   private handleError<T>(result?: T) {
     return (): Observable<T> => {
 

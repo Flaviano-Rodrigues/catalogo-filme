@@ -23,7 +23,7 @@ export class HomeComponent {
 
     document.title = 'Filmes'
 
-    this.filmesService.getPage('/movie/now_playing', 1).subscribe(val => {
+    this.filmesService.getPage('/movie/now_playing', 1).subscribe((val: FilmeSingleInArray[]) => {
       this.homeContent.splice(0, 0, {
         beforeTitle: '',
         title: 'Nos',
@@ -33,7 +33,7 @@ export class HomeComponent {
       })
     })
 
-    this.filmesService.getPage('/movie/popular', 1).subscribe(val => {
+    this.filmesService.getPage('/movie/popular', 1).subscribe((val: FilmeSingleInArray[]) => {
       this.homeContent.splice(1, 0, {
         beforeTitle: '',
         title: 'Mais',
@@ -43,7 +43,7 @@ export class HomeComponent {
       })
     })
 
-    this.filmesService.getPage('/movie/top_rated', 1).subscribe(val => {
+    this.filmesService.getPage('/movie/top_rated', 1).subscribe((val: FilmeSingleInArray[]) => {
       this.homeContent.splice(2, 0, {
         beforeTitle: '',
         title: 'Quem',
@@ -53,7 +53,7 @@ export class HomeComponent {
       })
     })
 
-    this.filmesService.getPage('/movie/upcoming', 1).subscribe(val => {
+    this.filmesService.getPage('/movie/upcoming', 1).subscribe((val: FilmeSingleInArray[]) => {
       this.homeContent.splice(3, 0, {
         beforeTitle: '',
         title: 'Em',

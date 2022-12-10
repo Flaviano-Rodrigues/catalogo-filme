@@ -1,0 +1,14 @@
+.master {
+  height: 100vh;
+
+  &-input {
+    padding-bottom: 0px;
+  }
+
+  &-contentMovies {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+}
