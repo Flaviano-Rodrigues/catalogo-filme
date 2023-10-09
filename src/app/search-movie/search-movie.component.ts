@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { FilmesService } from '../filmes.service';
-import { FilmeSingleInArray } from '../interfaces/Filmes';
+import { Component } from '@angular/core'
+import { FilmesService } from '../filmes.service'
+import { FilmeSingleInArray } from '../interfaces/Filmes'
 
 @Component({
   selector: 'app-search-movie',
@@ -22,13 +22,13 @@ export class SearchMovieComponent {
   }
 
   makeSearch(input: HTMLInputElement): void {
-    this.FilmeService.search('/movie/', this.slug(input.value), 1).subscribe((val) => {
+    this.FilmeService.search('/movie', this.slug(input.value), 1).subscribe((val) => {
       this.filmes = val
     })
     input.value = ''
   }
 
-  constructor(
+  constructor (
     private FilmeService: FilmesService
   ) { }
 
