@@ -1,1 +1,33 @@
-<p>search-movie works!</p>
+<div class="master">
+  <br>
+  <div class="box-container master-input">
+    <div style="cursor: text;">
+      <form action="">
+        <mat-form-field class="w100">
+          <mat-label>Pesquisar</mat-label>
+          <input value="batman" #input type="text" matInput placeholder="Ex. Batman">
+          <button *ngIf="input.value" matSuffix mat-icon-button aria-label="Clear" (click)="makeSearch(input)">
+            <mat-icon>send</mat-icon>
+          </button>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+
+  <br>
+  <div class="box-container master-movies">
+    <h2>Result<span class="default-color">ados</span></h2>
+
+
+    <div class="master-contentMovies">
+      <div *ngFor="let info of filmes">
+        <app-poster-movie *ngIf="info.poster_path !== null" [info]="info">
+        </app-poster-movie>
+      </div>
+    </div>
+
+    <div *ngIf="filmes.length <= 0" style="height: 200px;" class="flex-center">
+      <p><span class="default-color">Ops...</span> Está vazio :(</p>
+    </div>
+  </div>
+</div>

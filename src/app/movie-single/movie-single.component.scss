@@ -90,14 +90,14 @@ $colorShip: darken($color: #303030, $amount: 5) !important;
         }
     }
 
-    .informacoes {
+    &-informacoes {
         ul {
             padding: 0 10px;
             list-style: none;
         }
     }
 
-    .img-companie {
+    &-img-companie {
         @extend %defaults-to-img;
         width: 100px;
         height: 70px;
@@ -109,12 +109,66 @@ $colorShip: darken($color: #303030, $amount: 5) !important;
         }
     }
 
-    .first-content {
+    &-first-content {
         align-items: flex-end;
     }
 
-    .title-with-link {
+    &-title-with-link {
         text-decoration: underline;
+    }
+
+    &-comentarios {
+        font-size: 20px;
+
+        &-single {
+
+            &-header {
+                display: flex;
+                align-items: center;
+
+                &-photo {
+                    @extend %defaults-to-img;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    display: inline-block;
+                    margin-right: 10px;
+                }
+            }
+
+            &-star {
+                position: relative;
+                top: 14px;
+                font-size: 12px;
+            }
+
+        }
+    }
+
+    &-title-filme {
+        margin: 0;
+    }
+
+    h2.reset {
+        margin: 0;
+    }
+
+    &-content-chipInVideos {
+        margin-top: 10px;
+    }
+
+    &-with-recommendations {
+        padding: 0;
+        padding-top: 15px;
+        padding-bottom: 25px;
+
+        h2 {
+            margin-left: 20px;
+        }
+    }
+
+    .flex-between {
+        margin-bottom: 20px;
     }
 }
 
@@ -147,7 +201,7 @@ $colorShip: darken($color: #303030, $amount: 5) !important;
 
 @media screen and (max-width: 768px) {
     .body {
-        .first-content {
+        &-first-content {
             &-sinopse {
                 margin-top: 20px;
             }
@@ -155,9 +209,9 @@ $colorShip: darken($color: #303030, $amount: 5) !important;
     }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 500px) {
     .body {
-        .img-companie {
+        &-img-companie {
             width: 100px;
             height: 70px;
 
@@ -166,9 +220,26 @@ $colorShip: darken($color: #303030, $amount: 5) !important;
             }
         }
 
-        .first-content {
-            &-sinopse {
-                margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .body {
+        &-content-chipInVideos {
+            display: none;
+        }
+
+        &-comentarios {
+
+            &-single {
+
+                &-header {
+
+                    &-photo {
+                        display: none;
+                    }
+                }
+
             }
         }
     }

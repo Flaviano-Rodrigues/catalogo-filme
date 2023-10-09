@@ -38,6 +38,39 @@ export interface Providers {
     rent: DefaultProvider[];
 }
 
+export interface Comentario {
+    author: string,
+    author_details: {
+        avatar_path: string | null,
+        rating: number | null
+    },
+    content: string,
+    created_at: string,
+    id: string,
+}
+
+// export interface Images {
+//     id: number,
+//     backdrops: {
+//         aspect_ratio: number,
+//         file_path: string,
+//         height: number,
+//         iso_639_1: string | null,
+//         vote_average: number,
+//         vote_count: number,
+//         width: number
+//     }[],
+//     posters: {
+//         aspect_ratio: number,
+//         file_path: string,
+//         height: number,
+//         iso_639_1: string | null,
+//         vote_average: number,
+//         vote_count: number,
+//         width: number
+//     }[]
+// }
+
 export interface FilmeSingleToShow {
     adult: boolean,
     backdrop_path: string | null,
